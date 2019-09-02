@@ -43,6 +43,11 @@ algo3.values
 
 algo4.weights
 
+print("algo1",algo1.counts,algo1.values)
+print("algo2",algo2.counts,algo2.values)
+print("algo3",algo3.counts,algo3.values)
+
 num_sims = 1000
 horizon = 10
 results = test_algorithm(algo1, arms, num_sims, horizon)
+

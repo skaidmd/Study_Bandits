@@ -9,5 +9,3 @@ class BernoulliArm():
       return 0.0
     else:
       return 1.0
-  
-
