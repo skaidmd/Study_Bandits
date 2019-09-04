@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 execfile("core.py")
 
+import pandas
+
 def calc_ecpm(algo):
 
     #
@@ -30,11 +32,18 @@ def run():
     arms = [BernoulliArm(r) for r in arm_rates]
     counts = [10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     values = [0.012, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+    #上記設定で探索の割合を0.1〜0.9まで変動しながら試算を繰り返す
     for ep in xrange(1, 10):
         print ep * 0.1
-        for _ in xrange(10000):
+
+        #各試行を10000回繰り返して
+        # 10000→100にしとく
+        for _ in xrange(100):
             data.append((ep*0.1, run_eg(ep*0.1, counts, values, arms)))
     return pandas.DataFrame(data, columns=['ep', 'epcm'])
 
+
+#探索の割合を0.1ごと変動させながら
 result = run()
 result.boxplot(by="ep")

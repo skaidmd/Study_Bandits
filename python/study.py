@@ -26,7 +26,6 @@ print(counts)
 print([round(val,4) for val in values])
 
 
-
 def calc_ecpm(algo):
     total = sum(algo.counts) - 10000
     ecpm = 0.0
